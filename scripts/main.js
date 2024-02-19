@@ -8,7 +8,7 @@ function qTransforms(question) {
 
 async function parseCards(file, minRating) {
   const data = await (await fetch(file)).text();
-  const bottomText = "Babble Version 0.0 | Card ";
+  const bottomText = "Bangarang v0.0 | Card ";
   const x = shuffle($.csv.toArrays(data), 0);
 
   let cardJson = [];
@@ -43,10 +43,10 @@ const backing = `
     let result = "";
     for (let i = 0; i < 20; i++) {
       if (i % 2 == 1) {
-        result += "        ";
+        result += "           ";
       }
-      for (let i = 0; i < 10; i++) {
-        result += "Babble        ";
+      for (let i = 0; i < 7; i++) {
+        result += "Bangarang      ";
       }
       result += "\n\n";
     }
