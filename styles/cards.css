@@ -18,25 +18,35 @@
 
 body {
   margin: 0px;
-  /* TODO: This should be non-zero to allow for printer margins, but doing so reduces the size of the cards*/
   padding: 0cm;
   font-family: Arial;
 }
 
-.cards {
-  /* background-color: #360000; */
-  position: relative;
+.page {
+  padding: 0cm;
+  margin: 0px;
   width: 8.5in;
   height: 11in;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.cards {
+  position: relative;
+  width: 7.5in;
+  height: 10.5in;
   margin: 0px;
   padding: 0px;
-  overflow: hidden;
+  border-width: thick;
+  border-radius: 0cm;
+  border: solid #360000;
 }
 
 .cards > img {
-  /*position: absolute; top: 0px; left: 0px;*/
-  width: 8.5in;
-  height: 11in;
+  width: 7.5in;
+  height: 10.5in;
   margin: 0px;
   padding: 0px;
 }
@@ -49,8 +59,6 @@ body {
   flex-flow: row wrap;
   justify-content: flex-start;
   align-content: flex-start;
-  width: 8.5in;
-  height: 11in;
   margin: 0px;
   padding: 0px;
 }
@@ -102,7 +110,7 @@ body {
 .backing {
   background-color: white;
   position: relative;
-  width: 8.5in;
+  width: 8in;
   height: 11in;
   margin: 0px;
   padding: 0px;

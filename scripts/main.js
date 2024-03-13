@@ -37,24 +37,25 @@ async function parseCards(file, minRating) {
 }
 
 const backing = `
-<div class="backing">
-<div>
-  ${(() => {
-    let result = "";
-    for (let i = 0; i < 20; i++) {
-      if (i % 2 == 1) {
-        result += "           ";
-      }
-      for (let i = 0; i < 7; i++) {
-        result += "Bangarang      ";
-      }
-      result += "\n\n";
-    }
-    return result;
-  })()}
-<div>
+<div class="page">
+  <div class="backing">
+    <div>
+      ${(() => {
+        let result = "";
+        for (let i = 0; i < 20; i++) {
+          if (i % 2 == 1) {
+            result += "           ";
+          }
+          for (let i = 0; i < 7; i++) {
+            result += "Bangarang      ";
+          }
+          result += "\n\n";
+        }
+        return result;
+      })()}
+    </div>
+  </div>
 </div>
-
 `;
 
 async function generateCards() {
@@ -84,11 +85,12 @@ async function generateCards() {
         </div>
       `;
     }
-    // TODO: This should only be the size of the cards
     let cardPage = `
-      <div class="cards">
-        ${doBackground ? '<img src="images/background-color.png">' : ""}
-        <div> ${cardHTML} </div>
+      <div class="page">
+        <div class="cards">
+          ${doBackground ? '<img src="images/background-color.png">' : ""}
+          <div> ${cardHTML} </div>
+        </div>
       </div>
     `;
     document.body.insertAdjacentHTML("beforeend", cardPage);
