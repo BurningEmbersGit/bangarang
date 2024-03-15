@@ -9,7 +9,7 @@ function qTransforms(question) {
 async function parseCards(file, minRating) {
   const data = await (await fetch(file)).text();
   const bottomText = "Bangarang v0.0 | Card ";
-  const x = shuffle($.csv.toArrays(data), 0);
+  const x = $.csv.toArrays(data)
 
   let cardJson = [];
   let i = 0;
