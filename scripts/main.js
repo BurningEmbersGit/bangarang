@@ -13,6 +13,7 @@ async function parseCards(file, minRating) {
 
   let cardJson = [];
   let i = 0;
+  let numCards = 0;
   while (i < x.length) {
     let card = {
       questions: [],
@@ -31,7 +32,11 @@ async function parseCards(file, minRating) {
     }
     if (card.questions.length > 0) {
       cardJson.push(card);
+      numCards++;
     }
+  }
+  for (card of cardJson){
+    card.bottomText += "/"+numCards.toString()
   }
   return cardJson;
 }

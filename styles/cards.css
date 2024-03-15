@@ -99,8 +99,8 @@ body {
 }
 
 .card .bottom {
-  font-size: 3mm;
-  margin-top: -0.5em;
+  font-size: 2.5mm;
+  margin-bottom: 0.5mm;
   margin-left: auto;
   margin-right: 1mm;
   align-self: flex-end;
