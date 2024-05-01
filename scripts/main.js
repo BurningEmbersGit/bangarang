@@ -2,14 +2,14 @@ function qTransforms(question) {
   question = question.replace("(tf):", "<b>True or False:</b>");
   question = question.replace("''", '"');
   question = question.replace("'", "\u2019");
-  question = question.replace("\\;",",")
+  question = question.replace("\\;", ",");
   return question;
 }
 
 async function parseCards(file, minRating) {
   const data = await (await fetch(file)).text();
   const bottomText = "Bangarang v0.0 | Card ";
-  const x = $.csv.toArrays(data)
+  const x = $.csv.toArrays(data);
 
   let cardJson = [];
   let i = 0;
@@ -21,10 +21,7 @@ async function parseCards(file, minRating) {
     };
     while (card.questions.length < 3 && i < x.length) {
       // Accept cards with a high enough rating if specified
-      if (
-        minRating <= 0 ||
-        (x[i].length >= 2 && parseFloat(x[i][1]) >= minRating)
-      ) {
+      if (minRating <= 0 || (x[i].length >= 2 && parseFloat(x[i][1]) >= minRating)) {
         console.log(x[i][0]);
         card.questions.push(qTransforms(x[i][0]));
       }
@@ -35,8 +32,8 @@ async function parseCards(file, minRating) {
       numCards++;
     }
   }
-  for (card of cardJson){
-    card.bottomText += "/"+numCards.toString()
+  for (card of cardJson) {
+    card.bottomText += "/" + numCards.toString();
   }
   return cardJson;
 }
@@ -80,9 +77,7 @@ async function generateCards() {
       cardHTML += `
         <div class="card ${fancyborder ? "fancyborder" : ""}">
           <div class="questions">
-            ${card.questions
-              .map((question) => `<div>${question}</div>`)
-              .join("\n")}
+            ${card.questions.map((question) => `<div>${question}</div>`).join("\n")}
           </div>
           <div class="bottom">
             ${card.bottomText}

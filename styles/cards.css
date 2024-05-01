@@ -30,7 +30,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
 .cards {
@@ -65,9 +64,8 @@ body {
 
 .fancyborder {
   border-radius: 0cm;
-  box-shadow: inset #360000 0 0 0 0.5mm, inset #6d0202 0 0 0 1mm,
-    inset #a31818 0 0 0 1.5mm, inset #ee7272 0 0 0 2mm,
-    inset #ffb9b9 0 0 0 2.5mm;
+  box-shadow: inset #360000 0 0 0 0.5mm, inset #6d0202 0 0 0 1mm, inset #a31818 0 0 0 1.5mm,
+    inset #ee7272 0 0 0 2mm, inset #ffb9b9 0 0 0 2.5mm;
 }
 
 .card {
