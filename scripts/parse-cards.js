@@ -61,7 +61,7 @@ const backing = `
 `;
 
 async function generateCards() {
-  const cardData = await parseCards("data/example.csv", 0);
+  const cardData = await parseCards("carddata/example.csv", 0);
   const fancyborder = true;
   const doBackground = true;
   const doBacks = true;
