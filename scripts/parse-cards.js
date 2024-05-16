@@ -100,4 +100,9 @@ async function generateCards() {
   }
 }
 
-generateCards();
+async function main() {
+  await generateCards()
+  await window.print()
+}
+
+main();
