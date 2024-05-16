@@ -20,8 +20,8 @@ const backing = `
 </div>
 `;
 
-async function generateCards() {
-  const cardData = await parseCards("data/example.csv", 0);
+async function displayCards() {
+  const cardData = await parseCards("carddata/example.csv", 0);
   const fancyborder = true;
   const doBackground = true;
   const doBacks = true;
@@ -60,4 +60,9 @@ async function generateCards() {
   }
 }
 
-generateCards();
+async function main() {
+  await displayCards();
+  window.print();
+}
+
+main();
