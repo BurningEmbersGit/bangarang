@@ -1,5 +1,8 @@
 // Credit to Ulf Aslak at https://stackoverflow.com/questions/16801687/javascript-random-ordering-with-seed
 function shuffle(array, seed) {
+  if (seed < 1) {
+    seed = seed * 10000;
+  }
   var m = array.length,
     t,
     i;

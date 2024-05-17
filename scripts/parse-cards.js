@@ -8,7 +8,7 @@ function qTransforms(question) {
 
 async function parseCards(file, minRating) {
   const data = await (await fetch(file)).text();
-  const bottomText = "Bangarang v0.0 | Card ";
+  const bottomText = "Bangarang v0.0 | Card ID ";
   const x = $.csv.toArrays(data);
 
   let cardJson = [];
@@ -22,7 +22,6 @@ async function parseCards(file, minRating) {
     while (card.questions.length < 3 && i < x.length) {
       // Accept cards with a high enough rating if specified
       if (minRating <= 0 || (x[i].length >= 2 && parseFloat(x[i][1]) >= minRating)) {
-        console.log(x[i][0]);
         card.questions.push(qTransforms(x[i][0]));
       }
       ++i;

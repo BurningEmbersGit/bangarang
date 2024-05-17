@@ -14,7 +14,6 @@ body {
   align-items: center;
   justify-content: center;
   margin: 0px;
-  padding: 5vh;
   min-height: 100%;
   height: 100%;
   width: 100%;
@@ -53,6 +52,7 @@ ol > li:before {
 }
 
 .fancyborder {
+  padding: 5vh;
   border-radius: 0cm;
   box-shadow: inset #360000 0 0 0 1vh, inset #6d0202 0 0 0 2vh, inset #a31818 0 0 0 3vh,
     inset #ee7272 0 0 0 4vh, inset #ffb9b9 0 0 0 5vh;
@@ -74,8 +74,7 @@ button {
   font-weight: bold;
   justify-content: center;
   margin: 0;
-  min-height: 3rem;
-  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+  padding: calc(0.5rem - 1px) calc(1rem - 1px);
   position: relative;
   text-decoration: none;
   transition: all 250ms;
