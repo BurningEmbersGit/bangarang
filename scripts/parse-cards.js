@@ -1,7 +1,8 @@
 function qTransforms(question) {
-  question = question.replace("(tf):", "<b>True or False:</b>");
-  question = question.replace("''", '"');
-  question = question.replace("'", "\u2019");
+  question = question.replace("(tf)", "<b>True or False:</b>");
+  question = question.replace("(wr)", "<b>Would I Rather:</b>");
+  question = question.replace(/\*[^\*]*\*/g, "<b>$&</b>").replace(/\*/g, "");
+  question = question.replace(/''/g, '"');
   question = question.replace("\\;", ",");
   return question;
 }
