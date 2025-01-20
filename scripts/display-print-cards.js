@@ -21,7 +21,8 @@ const backing = `
 `;
 
 async function displayCards() {
-  const cardData = await parseCards("carddata/example.csv", 0);
+  const url = location.href;
+  const cardData = await parseCards("carddata/" + url.substring(url.indexOf("?") + 1), 3.5, 3.5);
   const fancyborder = true;
   const doBackground = true;
   const doBacks = true;
@@ -33,7 +34,7 @@ async function displayCards() {
     let cardHTML = "";
     for (let j = 0; j < cardsPerPage && i + j < cardData.length; ++j) {
       const card = cardData[i + j];
-      // TODO: avoid diretly parsing questions as html - this is a security issue
+      // TODO: avoid directly parsing questions as html - this is a security issue
       cardHTML += `
         <div class="card ${fancyborder ? "fancyborder" : ""}">
           <div class="questions">
@@ -62,7 +63,6 @@ async function displayCards() {
 
 async function main() {
   await displayCards();
-  window.print();
 }
 
 main();

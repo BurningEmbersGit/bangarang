@@ -1,12 +1,16 @@
-
 class Deck {
   #cardData = null;
   #currCard = 0;
-  constructor() { }
+  constructor() {}
 
   async #initializeIfNeeded() {
     if (this.#cardData == null) {
-      this.#cardData = await parseCards("carddata/example.csv", 0);
+      const url = location.href;
+      this.#cardData = await parseCards(
+        "carddata/" + url.substring(url.indexOf("?") + 1),
+        3.5,
+        3.5
+      );
     }
   }
 
@@ -17,7 +21,7 @@ class Deck {
 
   async nextCard() {
     await this.#initializeIfNeeded();
-    this.#currCard = Math.min(this.#cardData.length, this.#currCard + 1)
+    this.#currCard = Math.min(this.#cardData.length, this.#currCard + 1);
   }
 
   async shuffle() {
@@ -30,7 +34,7 @@ class Deck {
     await this.#initializeIfNeeded();
     let cardHTML = "";
     const card = this.#cardData[this.#currCard];
-    // TODO: avoid diretly parsing questions as html - this is a security issue
+    // TODO: avoid directly parsing questions as html - this is a security issue
     cardHTML += `
         <div class="questions">
           ${card.questions.map((question) => `<div>${question}</div>`).join("\n")}
@@ -42,34 +46,26 @@ class Deck {
     $("#carddiv").html(cardHTML);
     $("#next").html("Next (" + (this.#currCard + 1) + "/" + this.#cardData.length + ")");
     if (this.#currCard == 0) {
-      $("#previous").css("background-color", "#ffb685")
-    }
-    else (
-      $("#previous").css("background-color", $("#shuffle").css("background-color"))
-    )
+      $("#previous").css("background-color", "#ffb685");
+    } else $("#previous").css("background-color", $("#shuffle").css("background-color"));
     if (this.#currCard == this.#cardData.length - 1) {
-      $("#next").css("background-color", "#ffb685")
-    }
-    else (
-      $("#next").css("background-color", $("#shuffle").css("background-color"))
-    )
+      $("#next").css("background-color", "#ffb685");
+    } else $("#next").css("background-color", $("#shuffle").css("background-color"));
   }
 }
-
-
 
 $(document).ready(async function () {
   var deck = new Deck();
   await deck.displayCard();
-  $("#previous").on('click', async function () {
+  $("#previous").on("click", async function () {
     deck.prevCard();
     await deck.displayCard();
   });
-  $("#next").on('click', async function () {
+  $("#next").on("click", async function () {
     deck.nextCard();
     await deck.displayCard();
   });
-  $("#shuffle").on('click', async function () {
+  $("#shuffle").on("click", async function () {
     deck.shuffle();
     await deck.displayCard();
   });

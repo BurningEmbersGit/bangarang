@@ -6,7 +6,7 @@ function qTransforms(question) {
   return question;
 }
 
-async function parseCards(file, minRating) {
+async function parseCards(file, minRating, defaultRating) {
   const data = await (await fetch(file)).text();
   const bottomText = "Bangarang v0.0 | Card ID ";
   const x = $.csv.toArrays(data);
@@ -21,7 +21,11 @@ async function parseCards(file, minRating) {
     };
     while (card.questions.length < 3 && i < x.length) {
       // Accept cards with a high enough rating if specified
-      if (minRating <= 0 || (x[i].length >= 2 && parseFloat(x[i][1]) >= minRating)) {
+      const useQuestion =
+        (x[i].length >= 2 && parseFloat(x[i][1]) >= minRating) || // Has rating
+        ((x[i].length < 2 || isNaN(x[i][1])) && defaultRating >= minRating); // No rating
+
+      if (useQuestion) {
         card.questions.push(qTransforms(x[i][0]));
       }
       ++i;
